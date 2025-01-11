@@ -1,12 +1,18 @@
 
-# Ansible-Docker Automation Project
+# Ansible-Docker and terraform Automation Project
 
 This project demonstrates an automated workflow using Ansible inside a Docker container to manage gitea infrastructure with runners. 
 
 The setup includes running Ansible playbooks in a containerized environment with easy integration with Docker Compose.
 
 Traefik was used as a reverse proxy.
+
+You have 2 options to deploy the infrastructure:
+- Using docker-compose
+- Using terraform
+
 ---
+
 
 ## Prerequisites
 
@@ -53,7 +59,7 @@ This will create a Docker image named `ansible-docker` with Ansible and other re
 
 ---
 
-### 2. **Run the Application with Docker Compose**
+### 2.1 **Option 1: Run the Application with Docker Compose**
 
 Use Docker Compose to start the Ansible container along with any dependent services:
 ```bash
@@ -63,6 +69,33 @@ docker compose up -d --build
 - **`-d`**: Runs the containers in detached mode (background).
 - **`--build`**: Rebuilds the image before starting the containers.
 
+
+### 2.2 **Option 2: Run the Application with Terraform**
+
+- Install terraform: [Terraform Installation Guide](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+
+
+Initialize Terraform:
+```bash
+terraform init
+```
+
+Validate the Configuration:
+```bash
+terraform validate
+```
+
+Plan the Changes:
+```bash
+terraform plan
+```
+
+Apply the Configuration:
+```bash
+terraform apply
+```
+
+![Terraform Expected Results](images/terraform.png)
 ---
 
 ### 3. **Access and Configure-Install the Gitea Application**
@@ -100,14 +133,13 @@ docker run   -v ./ansible:/ansible   -v /var/run/docker.sock:/var/run/docker.soc
 
 ---
 
-### Clone with ssh 
+### Clone repo with ssh !
 
 - `ssh-keygen -t rsa -b 4096 -C "ahmad.harkous@epita.fr" -f /path_to_file/ssh.key`
 - `chmod 600 /path_to_file/ssh.key`
 - `ssh-add /path_to_file/ssh.key`
-- copy ssh.key.pub and add it to your gitea 
+- copy ssh.key.pub and add it to your gitea settings dashboard
+- ex: `git clone ssh://git@git.local:2222/ahmad/tp5-terraform.git` 
 
 ---
-
-
 
