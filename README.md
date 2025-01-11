@@ -67,6 +67,7 @@ docker compose up -d --build
 
 ### 3. **Access and Configure-Install the Gitea Application**
 
+Add `https://git.local` pointing to localhost on your system hosts file
 Access the Gitea application at `https://git.local` and configure the application as needed.
 
 Create a new repository 
