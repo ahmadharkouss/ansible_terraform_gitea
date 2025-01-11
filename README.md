@@ -1,5 +1,5 @@
 
-# Ansible-Docker and terraform Automation Project
+# Ansible-Docker and Terraform Automation Project
 
 This project demonstrates an automated workflow using Ansible inside a Docker container to manage gitea infrastructure with runners. 
 
