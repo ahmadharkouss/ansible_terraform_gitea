@@ -96,6 +96,7 @@ docker run   -v ./ansible:/ansible   -v /var/run/docker.sock:/var/run/docker.soc
 
 ![Result Command Line](images/playbook.png)
 ![Result Dashboard](images/runners_dashboard.png)
+![Action Job](images/job.png)
 
 ---
 
