@@ -1,0 +1,13 @@
+---
+# Tasks for generating and distributing the token
+- name: Generate runner token in Gitea
+  community.docker.docker_container_exec:
+    container: "{{ gitea_container_name }}"
+    command: "gitea --config {{ gitea_config_path }} actions generate-runner-token"
+  register: token_output
+  when: gitea_container_name is defined and gitea_config_path is defined
+
+- name: Print token generation result
+  debug:
+    msg: "Token generation output: {{ token_output.stdout }}"
+  when: gitea_container_name is defined and gitea_config_path is defined

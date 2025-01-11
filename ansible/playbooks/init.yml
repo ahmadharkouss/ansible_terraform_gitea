@@ -1,0 +1,11 @@
+---
+- name: Get Token
+  hosts: locals
+  roles:
+    - { role: get_token }
+    
+- name: Init runners
+  hosts: locals
+  roles:
+    - { role: init_runners }
+ 

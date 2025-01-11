@@ -1,0 +1,8 @@
+gitea_config_path: /etc/gitea/app.ini
+gitea_container_name: tp1_gitea
+runner_containers_names:
+- "gitea-runner-1"
+- "gitea-runner-2"
+- "gitea-runner-3"
+gitea_url:  http://tp1_gitea:3000
+runner_labels: "ansible-runner"

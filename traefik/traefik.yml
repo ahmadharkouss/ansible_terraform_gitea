@@ -1,0 +1,29 @@
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  
+  websecure:
+    address: ":443"
+
+  ssh:
+    address: ":2222"
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: my.mail@pm.me
+      storage: acme.json
+      httpChallenge:
+        entryPoint: web
+
+providers:
+  docker: {}
+
+api:
+  insecure: true

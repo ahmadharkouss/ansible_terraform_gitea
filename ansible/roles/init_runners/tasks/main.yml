@@ -1,0 +1,18 @@
+---
+# Tasks for registering and starting runners
+- name: Register Gitea runners
+  vars:
+    registered_token: "{{ hostvars['localhost']['token_output'].stdout }}"
+  community.docker.docker_container_exec:
+    container: "{{ item }}"
+    command: "act_runner register --no-interactive --instance {{ gitea_url }} --token {{ registered_token }} --name {{ item }} --labels {{ runner_labels }}"
+  when: gitea_url is defined and registered_token is defined and runner_labels is defined and item is defined
+  loop: "{{ runner_containers_names }}"
+
+#Tasks for starting runners
+- name: Start Gitea runners
+  community.docker.docker_container_exec:
+    container: "{{ item }}"
+    command: "/bin/sh -c 'nohup act_runner daemon > /act_runner.log 2>&1 &'"
+  when: item is defined
+  loop: "{{ runner_containers_names }}"
