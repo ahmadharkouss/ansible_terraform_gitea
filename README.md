@@ -98,7 +98,5 @@ docker run   -v ./ansible:/ansible   -v /var/run/docker.sock:/var/run/docker.soc
 
 ### Improvements
 
-- integrate traefik for reverse proxy
-- use https for production
 
 ---
