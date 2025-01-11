@@ -101,13 +101,10 @@ docker run   -v ./ansible:/ansible   -v /var/run/docker.sock:/var/run/docker.soc
 
 ### Clone with ssh 
 
-`ssh-keygen -t rsa -b 4096 -C "ahmad.harkous@epita.fr" -f /path_to_file/ssh.key`
-
-`chmod 600 /path_to_file/ssh.key`
-
-`ssh-add /path_to_file/ssh.key`
-
-copy ssh.key.pub and add it to your gitea 
+- `ssh-keygen -t rsa -b 4096 -C "ahmad.harkous@epita.fr" -f /path_to_file/ssh.key`
+- `chmod 600 /path_to_file/ssh.key`
+- `ssh-add /path_to_file/ssh.key`
+- copy ssh.key.pub and add it to your gitea 
 
 ---
 
