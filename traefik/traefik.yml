@@ -7,20 +7,28 @@ entryPoints:
           to: websecure
           scheme: https
           permanent: true
-  
+
   websecure:
     address: ":443"
 
   ssh:
     address: ":2222"
 
-certificatesResolvers:
-  letsencrypt:
-    acme:
-      email: my.mail@pm.me
-      storage: acme.json
-      httpChallenge:
-        entryPoint: web
+# Certificates configuration for local dev
+tls:
+  certificates:
+    - certFile: ./certs/git.local-cert.pem
+      keyFile: ./certs/git.loacal-key.pem
+
+
+#Use it only for production in domain you owned and remove the tls section above
+#certificatesResolvers:
+#  letsencrypt:
+#    acme:
+#      email: my.mail@pm.me
+#      storage: acme.json
+#      httpChallenge:
+#        entryPoint: web
 
 providers:
   docker: {}

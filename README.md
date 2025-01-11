@@ -5,9 +5,7 @@ This project demonstrates an automated workflow using Ansible inside a Docker co
 
 The setup includes running Ansible playbooks in a containerized environment with easy integration with Docker Compose.
 
-Traefik was not used because this project is deployed on production behind an nginx reverse proxy: [https://gitea.devgains.com/](https://gitea.devgains.com)
-
-
+Traefik was used as a reverse proxy.
 ---
 
 ## Prerequisites
@@ -21,8 +19,8 @@ Before you begin, ensure the following prerequisites are met:
 2. **Ansible Knowledge**  
    Familiarity with Ansible, playbooks, and inventory management will help you understand and modify the workflow.
 
-3. **Project Directory Structure**  
-   Ensure your project directory follows this structure:
+3. **Ansible Directory Structure**  
+   Ensure your ansible directory follows this structure:
    ```
    .
    ├── ansible/
@@ -69,9 +67,14 @@ docker compose up -d --build
 
 ### 3. **Access and Configure-Install the Gitea Application**
 
-Access the Gitea application at `http://localhost:3000` and configure the application as needed.
+Access the Gitea application at `https://git.local` and configure the application as needed.
 
 Create a new repository 
+
+#### Warning:
+
+You need to trust the self-signed ceritifcate on your OS!!!( ASK GPT )
+The certificate is available at `certs/git.local-cert.pem`
 
 ---
 
@@ -96,7 +99,17 @@ docker run   -v ./ansible:/ansible   -v /var/run/docker.sock:/var/run/docker.soc
 
 ---
 
-### Improvements
+### Clone with ssh 
 
+`ssh-keygen -t rsa -b 4096 -C "ahmad.harkous@epita.fr" -f /path_to_file/ssh.key`
+
+`chmod 600 /path_to_file/ssh.key`
+
+`ssh-add /path_to_file/ssh.key`
+
+copy ssh.key.pub and add it to your gitea 
 
 ---
+
+
+
