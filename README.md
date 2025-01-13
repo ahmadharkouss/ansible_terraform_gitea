@@ -74,6 +74,12 @@ docker compose up -d --build
 
 - Install terraform: [Terraform Installation Guide](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
+Change the docker socket path in `terraform/main.tf` to match your system:
+```hcl
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+```
 
 Initialize Terraform:
 ```bash
